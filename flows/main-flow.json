@@ -1,0 +1,36 @@
+{
+  "name": "main-flow",
+  "version": "1.0.0",
+  "description": "Primary orchestration flow for RadiaSync processing.",
+  "steps": [
+    {
+      "id": "receive",
+      "type": "input",
+      "action": "accept_payload"
+    },
+    {
+      "id": "validate",
+      "type": "process",
+      "action": "validate_payload",
+      "dependsOn": ["receive"]
+    },
+    {
+      "id": "normalize",
+      "type": "process",
+      "action": "normalize_payload",
+      "dependsOn": ["validate"]
+    },
+    {
+      "id": "dispatch",
+      "type": "output",
+      "action": "dispatch_to_targets",
+      "dependsOn": ["normalize"]
+    },
+    {
+      "id": "observe",
+      "type": "monitor",
+      "action": "record_telemetry",
+      "dependsOn": ["dispatch"]
+    }
+  ]
+}

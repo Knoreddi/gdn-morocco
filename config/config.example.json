@@ -1,0 +1,18 @@
+{
+  "projectName": "gdn-morocco",
+  "environment": "development",
+  "logLevel": "info",
+  "radiaSync": {
+    "enabled": true,
+    "maxRetries": 3,
+    "retryBackoffMs": 500,
+    "timeoutMs": 10000
+  },
+  "dispatcher": {
+    "mode": "round_robin",
+    "targets": [
+      "target-a",
+      "target-b"
+    ]
+  }
+}
